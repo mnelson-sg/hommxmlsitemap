@@ -74,6 +74,7 @@ class SitemapController extends Controller
         }
         Craft::$app->response->format = Response::FORMAT_RAW;
         $headers = Craft::$app->response->headers;
+        $headers->add('X-Content-Type-Options', 'nosniff');
         $headers->add('Content-Type', 'text/xml');
 
         $dom = new DOMDocument('1.0', 'UTF-8');
