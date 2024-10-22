@@ -1,20 +1,8 @@
 # HOMM XML Sitemap Changelog
 
-## 1.0.3 - 2022-12-16
-
-- Ignore disabled sites
-
-## 1.0.2 - 2022-11-24
+## 0.0.6 - 2022-11-24
 
 - Honor addTrailingSlashesToUrls also for baseUrl
-
-## 1.0.1 - 2022-07-26
-
-- fixed per entry indexing flag
-
-## 1.0.0 - 2022-07-26
-
-- Craft CMS 4 ready
 
 ## 0.0.5 - 2021-08-06
 

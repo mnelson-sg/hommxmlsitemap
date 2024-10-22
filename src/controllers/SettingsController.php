@@ -49,7 +49,7 @@ class SettingsController extends Controller
      *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected array|bool|int $allowAnonymous = false;
+    protected $allowAnonymous = false;
 
     private function _createEntrySectionQuery(): Query
     {

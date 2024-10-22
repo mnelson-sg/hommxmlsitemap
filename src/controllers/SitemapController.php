@@ -44,7 +44,7 @@ use craft\commerce\elements\Product;
  */
 class SitemapController extends Controller
 {
-    protected array|bool|int $allowAnonymous = ['index'];
+    protected $allowAnonymous = ['index'];
 
     // Public Methods
     // =========================================================================
@@ -74,8 +74,8 @@ class SitemapController extends Controller
         }
         Craft::$app->response->format = Response::FORMAT_RAW;
         $headers = Craft::$app->response->headers;
-        $headers->add('X-Content-Type-Options', 'nosniff');
         $headers->add('Content-Type', 'text/xml');
+        $headers->add('X-Content-Type-Options', 'nosniff');
 
         $dom = new DOMDocument('1.0', 'UTF-8');
         $dom->formatOutput = true;
@@ -97,12 +97,14 @@ class SitemapController extends Controller
                 continue;
             }
 
+            $attributes = $entries->getAttributes();
+
             // NOTE: "seoIndexierung" is just for backwards compatibility
-            if (isset($entries->seoIndexierung) && !$entries->seoIndexierung) {
+            if (isset($attributes['seoIndexierung']) && !$attributes['seoIndexierung']) {
                 continue;
             }
 
-            if (isset($entries->seoIndexing) && !$entries->seoIndexing) {
+            if (isset($attributes['seoIndexing']) && !$attributes['seoIndexing']) {
                 continue;
             }
 
@@ -210,7 +212,6 @@ class SitemapController extends Controller
             ->andWhere(['elements.archived' => false])
             ->andWhere(['elements.draftId' => null])
             ->andWhere(['elements.revisionId' => null])
-            ->andWhere(['sites.enabled' => true])
             ->groupBy(['elements_sites.id']);
     }
 
@@ -247,7 +248,6 @@ class SitemapController extends Controller
             ->innerJoin('{{%sites}} sites', '[[elements_sites.siteId]] = [[sites.id]]')
             ->where(['=', '[[elements_sites.elementId]]', $elementId])
             ->andWhere(['sites.dateDeleted' => null])
-            ->andWhere(['sites.enabled' => true])
             ->groupBy(['elements_sites.id']);
     }
 
