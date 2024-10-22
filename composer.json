@@ -27,7 +27,7 @@
     ],
     "require": {
         "php": "^8.0|^8.1",
-        "craftcms/cms": "^4.0.0",
+        "craftcms/cms": "^3.1.2",
         "jaybizzle/crawler-detect": "^v1.2",
         "ext-dom": "*",
         "ext-json": "*",
