@@ -1,5 +1,5 @@
 {
-    "name": "homm/hommxmlsitemap",
+    "name": "mnelson/sgsitemap",
     "description": "Craft CMS Plugin to provide and manage XML Sitemap",
     "type": "craft-plugin",
     "version": "1.0.3",
